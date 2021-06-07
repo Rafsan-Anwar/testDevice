@@ -12,6 +12,16 @@ from .models import Testdb1, Testdb2
 from .serializers import Testdb1Serializer, Testdb2Serializer
 
 
+def index(request):
+    test_db1_qs = Testdb1.objects.all()
+    test_db2_qs = Testdb2.objects.all()
+    context = {
+        'test_db1_qs': test_db1_qs,
+        'test_db2_qs': test_db2_qs
+    }
+    return render(request, 'index.html', context)
+
+
 class TestApi1(APIView):
     def get_object(self, pk):
         try:

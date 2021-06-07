@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+
+<style>
+   #testDB2 {
+       display: none;
+   }
+</style>
+
+{% endblock styles %}
+{% block title %} Test Data {% endblock title %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row p-5 justify-content-center">
+        <div class="col-md-8">
+            <div class="table-responsive" id="testDB1">
+                <table class="table table-hover">
+                    <div class="table-title py-5">
+                        <h4 class="text-monospace text-center">Test API1 Data</h4>
+                    </div>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Node</th>
+                        <th scope="col">Volume</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in test_db1_qs %}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{data.node}}</td>
+                        <td>{{data.volume}}</td>
+                      </tr>
+                      {% endfor %}
+                      </tbody>
+                </table>
+              </div>
+
+
+              <div class="table-responsive" id="testDB2">
+                <table class="table table-hover">
+                    <div class="table-title py-5">
+                        <h4 class="text-monospace text-center">Test API2 Data</h4>
+                    </div>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Node</th>
+                        <th scope="col">Is On</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in test_db2_qs %}
+                        <tr>
+                          <th scope="row">{{forloop.counter}}</th>
+                          <td>{{data.node}}</td>
+                          <td>{{data.isOn}}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                </table>
+              </div>
+        </div>
+        <div class="col-md-8 d-flex justify-content-center">
+            <button class="btn btn-primary mx-2" data-table="testDB1" id="TestApi1Btn" onclick="changeTable(event)">TestApi1</button>
+            <button class="btn btn-primary mx-2" data-table="testDB2" id="TestApi2Btn" onclick="changeTable(event)">TestApi2</button>
+        </div>
+        
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    const testApi1Btn = document.getElementById('TestApi1Btn');
+    const testApi2Btn = document.getElementById('TestApi2Btn');
+    const testDB1 = document.getElementById('testDB1');
+    const testDB2 = document.getElementById('testDB2');
+
+    function changeTable(event) {
+        const table = event.target.dataset.table;
+        if(table === 'testDB1') {
+            testDB1.style.display = "block";
+            testDB2.style.display = "none";
+        }
+        else {
+            testDB1.style.display = "none";
+            testDB2.style.display = "block";
+        }
+    }
+
+</script>
+{% endblock scripts %}
