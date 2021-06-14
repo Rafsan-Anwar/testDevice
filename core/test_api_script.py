@@ -24,7 +24,7 @@ class Request:
 
 
 if __name__ == "__main__":
-    api_endpoint = '/test-api2/'
+    api_endpoint = '/test-api1/'
     request = Request(api_endpoint)
     post_data_api1 = {
         "node": "new string again",

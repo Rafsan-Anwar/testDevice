@@ -12,3 +12,7 @@ class Testdb2Serializer(serializers.ModelSerializer):
     class Meta:
         model = Testdb2
         fields = '__all__'
+
+
+class JsonSerializer(serializers.Serializer):
+    response = serializers.DictField(child=serializers.CharField())
