@@ -64,7 +64,7 @@ class TestApi1(APIView):
     def delete(self, request, *args, **kwargs):
         queryset = self.get_object(pk=kwargs.get('pk'))
         queryset.delete()
-        return Response("deleted", status=status.HTTP_204_NO_CONTENT)
+        return Response({"response": "deleted"}, status=status.HTTP_204_NO_CONTENT)
     
 
 
@@ -110,4 +110,4 @@ class TestApi2(APIView):
     def delete(self, request, *args, **kwargs):
         queryset = self.get_object(pk=kwargs.get('pk'))
         queryset.delete()
-        return Response("deleted", status=status.HTTP_204_NO_CONTENT)
+        return Response({"response": "deleted"}, status=status.HTTP_204_NO_CONTENT)

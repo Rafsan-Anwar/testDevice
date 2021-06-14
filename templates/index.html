@@ -23,7 +23,7 @@
                     </div>
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">id</th>
                         <th scope="col">Node</th>
                         <th scope="col">Volume</th>
                       </tr>
@@ -31,7 +31,7 @@
                     <tbody>
                         {% for data in test_db1_qs %}
                       <tr>
-                        <th scope="row">{{forloop.counter}}</th>
+                        <th scope="row">{{data.id}}</th>
                         <td>{{data.node}}</td>
                         <td>{{data.volume}}</td>
                       </tr>
@@ -48,7 +48,7 @@
                     </div>
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">id</th>
                         <th scope="col">Node</th>
                         <th scope="col">Is On</th>
                       </tr>
@@ -56,7 +56,7 @@
                     <tbody>
                         {% for data in test_db2_qs %}
                         <tr>
-                          <th scope="row">{{forloop.counter}}</th>
+                          <th scope="row">{{data.id}}</th>
                           <td>{{data.node}}</td>
                           <td>{{data.isOn}}</td>
                         </tr>
