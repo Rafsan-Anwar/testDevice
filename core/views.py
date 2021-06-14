@@ -50,6 +50,22 @@ class TestApi1(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @method_decorator(csrf_exempt)
+    def put(self, request, *args, **kwargs):
+        queryset = self.get_object(pk=kwargs.get('pk'))
+        serializer = Testdb1Serializer(queryset, data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @method_decorator(csrf_exempt)
+    def delete(self, request, *args, **kwargs):
+        queryset = self.get_object(pk=kwargs.get('pk'))
+        queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
 
 class TestApi2(APIView):
     def get_object(self, pk):
@@ -78,3 +94,18 @@ class TestApi2(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @method_decorator(csrf_exempt)
+    def put(self, request, *args, **kwargs):
+        queryset = self.get_object(pk=kwargs.get('pk'))
+        serializer = Testdb2Serializer(queryset, data=request.data)
+        if serializer.is_valid():
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @method_decorator(csrf_exempt)
+    def delete(self, request, *args, **kwargs):
+        queryset = self.get_object(pk=kwargs.get('pk'))
+        queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
