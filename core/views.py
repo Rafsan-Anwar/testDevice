@@ -9,9 +9,7 @@ from rest_framework import status
 from django.http import Http404
 
 from .models import Testdb1, Testdb2
-from .serializers import (
-    Testdb1Serializer, Testdb2Serializer, JsonSerializer, Dictionary
-)
+from .serializers import Testdb1Serializer, Testdb2Serializer
 
 
 def index(request):
@@ -66,8 +64,7 @@ class TestApi1(APIView):
     def delete(self, request, *args, **kwargs):
         queryset = self.get_object(pk=kwargs.get('pk'))
         queryset.delete()
-        serializer = JsonSerializer(Dictionary({"response": "deleted"}))
-        return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
 
 
@@ -113,5 +110,4 @@ class TestApi2(APIView):
     def delete(self, request, *args, **kwargs):
         queryset = self.get_object(pk=kwargs.get('pk'))
         queryset.delete()
-        serializer = JsonSerializer(Dictionary({"response": "deleted"}))
-        return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)

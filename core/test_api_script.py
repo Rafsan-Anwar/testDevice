@@ -24,10 +24,10 @@ class Request:
 
 
 if __name__ == "__main__":
-    api_endpoint = '/test-api1/4/'
+    api_endpoint = '/test-api1/8/'
     request = Request(api_endpoint)
     post_data_api1 = {
-        "node": "new string again",
+        "node": "new string again updated",
         "volume": 10
     }
     post_data_api2 = {
@@ -39,5 +39,4 @@ if __name__ == "__main__":
     # response = request.put(data=post_data_api1)
     response = request.delete()
     print(f"status code: {response.status_code}")
-    print(f"response: \n{response.json()}")
 
