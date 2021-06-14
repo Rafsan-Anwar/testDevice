@@ -55,6 +55,7 @@ class TestApi1(APIView):
         queryset = self.get_object(pk=kwargs.get('pk'))
         serializer = Testdb1Serializer(queryset, data=request.data)
         if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -63,7 +64,7 @@ class TestApi1(APIView):
     def delete(self, request, *args, **kwargs):
         queryset = self.get_object(pk=kwargs.get('pk'))
         queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("deleted", status=status.HTTP_204_NO_CONTENT)
     
 
 
@@ -100,6 +101,7 @@ class TestApi2(APIView):
         queryset = self.get_object(pk=kwargs.get('pk'))
         serializer = Testdb2Serializer(queryset, data=request.data)
         if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -108,4 +110,4 @@ class TestApi2(APIView):
     def delete(self, request, *args, **kwargs):
         queryset = self.get_object(pk=kwargs.get('pk'))
         queryset.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("deleted", status=status.HTTP_204_NO_CONTENT)
