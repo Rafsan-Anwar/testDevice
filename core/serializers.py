@@ -14,5 +14,10 @@ class Testdb2Serializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class Dictionary(object):
+    def __init__(self, dictionary):
+        self.dictionary = dictionary
+
+
 class JsonSerializer(serializers.Serializer):
     response = serializers.DictField(child=serializers.CharField())
