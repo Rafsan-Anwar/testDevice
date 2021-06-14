@@ -24,7 +24,7 @@ class Request:
 
 
 if __name__ == "__main__":
-    api_endpoint = '/test-api1/8/'
+    api_endpoint = '/test-api1/'
     request = Request(api_endpoint)
     post_data_api1 = {
         "node": "new string again updated",
@@ -34,9 +34,9 @@ if __name__ == "__main__":
         "node": "new node",
         "isOn": True
     }
-    # response = request.get()
+    response = request.get()
     # response = request.post(data=post_data_api1)
     # response = request.put(data=post_data_api1)
-    response = request.delete()
+    # response = request.delete()
     print(f"status code: {response.status_code}")
 
